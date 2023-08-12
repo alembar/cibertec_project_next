@@ -27,8 +27,8 @@ export default function RootLayout({
                           <MenuOptions />
                       </div>
                   </div>
-                  <div className="w-9/12">
-                      <div>{children}</div>
+                  <div className="w-9/12 flex flex-col items-center">
+                      <div className='w-11/12'>{children}</div>
                   </div>
               </div>
           </body>

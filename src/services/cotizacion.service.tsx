@@ -2,8 +2,8 @@ import axios from 'axios'
 import { handleResponse } from '../providers'
 import { api } from './baseUrl'
 
-const list = (param: string) =>
-    axios.get(`${api.cotizacion}?${param}`).then(handleResponse);
+const list = () =>
+    axios.get(`${api.cotizacion}`).then(handleResponse);
 
 const del = (id:number) =>
     axios.delete(`${api.cotizacion}/${id}`).then(handleResponse)
