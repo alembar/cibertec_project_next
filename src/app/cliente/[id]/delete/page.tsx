@@ -6,7 +6,7 @@ import { ParagraphData, Title } from "@/components/atom/common/commons";
 import { ButtonComp, CustomButton } from "@/components/atom/button";
 
 import { messageToast } from "@/components/atom/common/toast";
-export default function DeletePage({ params: { id } }: DefaultPageIdProps) {    
+export default function DeletePage({ params: { id } }: DefaultPageIdProps) {
     const [cliente, setCliente] = useState<IClienteData>();
     const [deleteClient, setDeleteClient] = useState(false);
     const handleConfirmDeletion = () => {
@@ -22,21 +22,24 @@ export default function DeletePage({ params: { id } }: DefaultPageIdProps) {
                 console.log(err);
             });
     }, [id]);
-    console.log(deleteClient);
-    
+
     useEffect(() => {
-        if(deleteClient){
+        if (deleteClient) {
             clienteService
                 .del(parseInt(id))
                 .then((res: string) => {
-                    window.location.replace(`/cliente?message=Cliente eliminado SATISFACTORIAMENTE&type=success`);
+                    window.location.replace(
+                        `/cliente?message=Cliente eliminado SATISFACTORIAMENTE&type=success`
+                    );
                     console.log(
                         `/cliente?successMessage=Cliente eliminado SATISFACTORIAMENTE`
                     );
-                    
                 })
                 .catch((err) => {
-                    messageToast({ message: "Error al eliminar cliente." ,type:"error"});
+                    messageToast({
+                        message: "Error al eliminar cliente.",
+                        type: "error",
+                    });
                 });
         }
     }, [deleteClient]);

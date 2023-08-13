@@ -1,35 +1,53 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client";
-import { useState, useEffect } from "react";
+'use client'
+import { useEffect, useState } from "react";
+import { clienteService } from "../../../../services/cliente.service";
+import { Toaster } from "react-hot-toast";
 import { Title } from "@/components/atom/common/commons";
 import { ItemForm } from "@/components/atom/cliente/item_form";
-import { SubmitButton } from "../../../components/atom/button";
-import { clienteService } from "@/services/cliente.service";
-import { messageToast, Toaster } from "../../../components/atom/common/toast";
+import { SubmitButton } from "@/components/atom/button";
+import { messageToast } from "@/components/atom/common/toast";
 
-export default function CreateClient() {
+export default function EditPage({ params: { id } }: DefaultPageIdProps) {
+    const [cliente, setCliente] = useState<IClienteData>();
     const [sentForm, setSentForm] = useState(false);
-    const [cliente, setCliente] = useState<IClienteDataCreateForm>({
+    const [dataCliente, setDataCliente] = useState<IClienteData>({
+        id: 0,
         razonSocial: "",
         ruc: "",
         correoElectronico: "",
     });
-    const [responseClient, setResponseClient] = useState<IClienteData>();
-    const params = "";
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setDataCliente((prevCliente) => ({
+            ...prevCliente,
+            [name]: value,
+        }));
+    };
+    useEffect(() => {
+        clienteService
+            .retrieve(parseInt(id))
+            .then((res: IClienteData) => {
+                setDataCliente({
+                    id: res.id,
+                    razonSocial: res.razonSocial,
+                    ruc: res.ruc,
+                    correoElectronico: res.correoElectronico,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [id]);
     useEffect(() => {
         if (sentForm) {
             clienteService
-                .create(cliente)
+                .update(dataCliente.id, dataCliente)
                 .then((res: IClienteData) => {
-                    setResponseClient(res);
+                    setDataCliente(res);
                     setSentForm(false);
-                    setCliente({
-                        razonSocial: "",
-                        ruc: "",
-                        correoElectronico: "",
-                    });
                     messageToast({
-                        message: "Cliente creado SATISFACTORIAMENTE.",
+                        message: "Cliente editado SATISFACTORIAMENTE.",
                         type: "success",
                     });
                 })
@@ -38,21 +56,15 @@ export default function CreateClient() {
                 });
         }
     }, [sentForm]);
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setCliente((prevCliente) => ({
-            ...prevCliente,
-            [name]: value,
-        }));
-    };
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSentForm(true);
     };
+
     return (
         <div className="flex flex-col ">
             <Toaster position="top-center" />
-            <Title data="Nuevo cliente" />
+            <Title data="Editar cliente" />
             <div className="flex flex-row justify-center items-center w-full pt-10">
                 <form
                     autoComplete="off"
@@ -65,7 +77,7 @@ export default function CreateClient() {
                             label="Razón Social"
                             name="razonSocial"
                             type="input"
-                            value={cliente.razonSocial}
+                            value={dataCliente.razonSocial}
                             on_change={handleChange}
                         />
                     </div>
@@ -75,7 +87,7 @@ export default function CreateClient() {
                             label="RUC"
                             name="ruc"
                             type="input"
-                            value={cliente.ruc}
+                            value={dataCliente.ruc}
                             on_change={handleChange}
                         />
                     </div>
@@ -85,7 +97,7 @@ export default function CreateClient() {
                             label="Correo Electrónico"
                             name="correoElectronico"
                             type="email"
-                            value={cliente.correoElectronico}
+                            value={dataCliente.correoElectronico}
                             on_change={handleChange}
                         />
                     </div>
