@@ -1,7 +1,5 @@
-import Image from 'next/image'
-
 export default function Home() {
-  return (
-    <>nothing</>
-  )
+  return <h1 className='flex justify-center text-3xl'>
+Sistema de gestión de instrumentos de gestión ambiental
+  </h1>;
 }
