@@ -6,9 +6,9 @@ interface ICotizacionData {
     asuntoCotizacion: string;
     estado: number;
     cliente: {
-        correoElectronico: string;
         id: number;
         razonSocial: string;
         ruc: string;
+        correoElectronico: string;
     };
 } 

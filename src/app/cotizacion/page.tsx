@@ -7,7 +7,7 @@ export default function CotizacionPage(){
     <div className="flex flex-col ">
         <Title data="Cotizaciones" />
         <div className="flex flex-row justify-end w-full pt-10">
-            <ButtonLink href='#' data="Nueva Cotizacion" />
+            <ButtonLink href='/cotizacion/create' data="Nueva Cotizacion" />
         </div>
         <QuotationsList />
     </div>

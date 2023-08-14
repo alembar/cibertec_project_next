@@ -40,21 +40,21 @@ const QuotationsList = () => {
             <div className="table-row-group">
                 {cotizacion.map((items, index) => (
                     <div key={items.id} className="table-row">
-                        <div className="border-l py-2 border-b text-center table-cell">
+                        <div className="border-l py-2 border-b text-center table-cell align-middle">
                             {index + 1}
                         </div>
-                        <div className="border-l py-2 border-b text-center table-cell">
+                        <div className="border-l py-2 border-b text-center table-cell align-middle">
                             <GetquotationNro number={items.id} />
                         </div>
-                        <div className="border-l py-2 text-center border-b table-cell">
+                        <div className="border-l py-2 text-center border-b table-cell align-middle">
                             {items.cliente.razonSocial}
                         </div>
-                        <div className="border-l py-2 text-center border-b table-cell">
+                        <div className="border-l py-2 text-center border-b table-cell align-middle">
                             <GetquotationStatus status={items.estado} />
                         </div>
-                        <div className="border-l py-2 text-center border-b border-r table-cell">
+                        <div className="border-l py-2 text-center border-b border-r table-cell align-middle">
                             <TableOptions
-                                allowed={["view", "edit", "delete"]}
+                                allowed={["view", "edititem"]}
                                 prevUrl="cotizacion"
                                 id={items.id}
                             />

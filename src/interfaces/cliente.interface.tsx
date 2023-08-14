@@ -11,3 +11,9 @@ interface IClienteDataCreateForm {
     ruc: string;
     correoElectronico: string;
 }
+
+
+interface ISelectDataClient {
+    value: any;
+    data: string;
+}

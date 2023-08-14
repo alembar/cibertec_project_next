@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { clienteService } from "../../../services/cliente.service";
 import {
+    Loading,
     ParagraphData,
     ParagraphTitle,
     Title,
@@ -44,7 +45,9 @@ const PreviewClient = (props: any) => {
                 </div>
             </div>
         </>
-    ) : null;
+    ) : (
+        <Loading />
+    );
 };
 
 export { PreviewClient };

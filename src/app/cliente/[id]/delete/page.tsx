@@ -31,9 +31,6 @@ export default function DeletePage({ params: { id } }: DefaultPageIdProps) {
                     window.location.replace(
                         `/cliente?message=Cliente eliminado SATISFACTORIAMENTE&type=success`
                     );
-                    console.log(
-                        `/cliente?successMessage=Cliente eliminado SATISFACTORIAMENTE`
-                    );
                 })
                 .catch((err) => {
                     messageToast({

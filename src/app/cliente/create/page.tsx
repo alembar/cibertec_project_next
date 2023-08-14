@@ -15,7 +15,7 @@ export default function CreateClient() {
         correoElectronico: "",
     });
     const [responseClient, setResponseClient] = useState<IClienteData>();
-    const params = "";
+
     useEffect(() => {
         if (sentForm) {
             clienteService

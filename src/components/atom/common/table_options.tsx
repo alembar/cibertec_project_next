@@ -20,6 +20,13 @@ const TableOptions = (props: TableOptionsData) => {
                     </Link>
                 </div>
             ) : null}
+            {values.includes("edititem") ? (
+                <div className="w-1/3 flex flex-row justify-center text-DarkGreen">
+                    <Link href={`${prevUrl}/${id}/items`}>
+                        <FaPencil />
+                    </Link>
+                </div>
+            ) : null}
             {values.includes("delete") ? (
                 <div className="w-1/3 flex flex-row justify-center text-RedWine">
                     <Link href={`${prevUrl}/${id}/delete`}>
