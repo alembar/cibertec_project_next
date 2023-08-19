@@ -19,9 +19,9 @@ const retrieve = (id: number) =>
 
 
 export const cotizacionService = {
-  list,
-  del,
-  create,
-  retrieve,
-  update
-}
+    list,
+    del,
+    create,
+    retrieve,
+    update,
+};

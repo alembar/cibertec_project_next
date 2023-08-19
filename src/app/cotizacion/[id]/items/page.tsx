@@ -39,7 +39,7 @@ export default function ItemsQuotation({ params: { id } }: DefaultPageIdProps){
                     <ParagraphData
                         data={
                             <GetquotationNro
-                                number={cotizacion?.nroCotizacion}
+                                number={cotizacion?.id}
                             />
                         }
                     />

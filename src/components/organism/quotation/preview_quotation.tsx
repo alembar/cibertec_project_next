@@ -37,7 +37,7 @@ const PreviewQuotation = (props: any) => {
                     <ParagraphData
                         data={
                             <GetquotationNro
-                                number={cotizacion.nroCotizacion}
+                                number={cotizacion.id}
                             />
                         }
                     />

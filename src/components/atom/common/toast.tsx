@@ -1,10 +1,5 @@
 import toast, { Toaster } from "react-hot-toast";
 
-interface IToast{
-    message: string
-    type: string
-}
-
 const successToast = (props: any) => toast.success(props);
 const errorToast = (props: any) => toast.error(props);
 const warningToast = (props: any) => toast(props);
